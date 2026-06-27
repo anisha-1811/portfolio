@@ -5,6 +5,7 @@ import { useSceneStore } from '../../store/useSceneStore'
 import ParticleField from './ParticleField'
 import Lights from './Lights'
 import CameraRig from './CameraRig'
+import HeroScene from './HeroScene'
 
 export default function SceneCanvas() {
   const setLoaded = useSceneStore((s) => s.setLoaded)
@@ -27,6 +28,9 @@ export default function SceneCanvas() {
         <CameraRig />
         <Lights />
         <ParticleField />
+
+        {/* HeroScene at z=0 — camera starts at z=8 looking at it */}
+        <HeroScene />
       </Suspense>
     </Canvas>
   )
