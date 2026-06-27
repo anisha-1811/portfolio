@@ -2,6 +2,9 @@ import { Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { AdaptiveDpr } from '@react-three/drei'
 import { useSceneStore } from '../../store/useSceneStore'
+import ParticleField from './ParticleField'
+import Lights from './Lights'
+import CameraRig from './CameraRig'
 
 export default function SceneCanvas() {
   const setLoaded = useSceneStore((s) => s.setLoaded)
@@ -21,7 +24,9 @@ export default function SceneCanvas() {
     >
       <AdaptiveDpr pixelated />
       <Suspense fallback={null}>
-        {/* We'll add particles, lights, and scenes here in Day 3 */}
+        <CameraRig />
+        <Lights />
+        <ParticleField />
       </Suspense>
     </Canvas>
   )
