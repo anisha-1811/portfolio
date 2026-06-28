@@ -10,6 +10,13 @@ import HeroScene from './HeroScene'
 export default function SceneCanvas() {
   const setLoaded = useSceneStore((s) => s.setLoaded)
 
+  const handleCreated = ({ camera }) => {
+    const isMobile = window.innerWidth < 768
+    camera.fov = isMobile ? 80 : 60
+    camera.updateProjectionMatrix()
+    setLoaded(true)
+  }
+
   return (
     <Canvas
       shadows
@@ -20,7 +27,7 @@ export default function SceneCanvas() {
       }}
       camera={{ position: [0, 0, 8], fov: 60, near: 0.1, far: 200 }}
       dpr={[1, 2]}
-      onCreated={() => setLoaded(true)}
+      onCreated={handleCreated}
       style={{ background: '#050510' }}
     >
       <AdaptiveDpr pixelated />
@@ -28,8 +35,6 @@ export default function SceneCanvas() {
         <CameraRig />
         <Lights />
         <ParticleField />
-
-        {/* HeroScene at z=0 — camera starts at z=8 looking at it */}
         <HeroScene />
       </Suspense>
     </Canvas>
