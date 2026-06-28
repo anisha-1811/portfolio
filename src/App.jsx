@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useSceneStore } from './store/useSceneStore'
 import SceneCanvas from './components/canvas/SceneCanvas'
 import LoadingScreen from './components/ui/LoadingScreen'
+import HeroText from './components/ui/HeroText'
 import './index.css'
 
 export default function App() {
@@ -33,9 +34,13 @@ export default function App() {
     <div className="relative w-full">
       {!isLoaded && <LoadingScreen />}
 
+      {/* Fixed 3D canvas — always behind everything */}
       <div className="fixed inset-0 z-0">
         <SceneCanvas />
       </div>
+
+      {/* HTML UI overlays */}
+      <HeroText />
 
       <div className="scroll-container relative z-10">
         <section className="h-screen" />
