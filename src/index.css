@@ -5,17 +5,20 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html, body, #root {
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
+html {
+  overflow-y: scroll;
   background: #050510;
-  color: #e2e8f0;
 }
 
-.scroll-container {
-  height: 400vh;
-  position: relative;
+body {
+  width: 100%;
+  background: #050510;
+  color: #e2e8f0;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
 }
 
 canvas { display: block; }
