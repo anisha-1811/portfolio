@@ -1,4 +1,4 @@
- import { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { useSceneStore } from '../../store/useSceneStore'
 
@@ -23,24 +23,30 @@ export default function HeroText() {
         y: 30,
       })
 
-      gsap.to(eyebrowRef.current, { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out', delay: 0.2 })
-      gsap.to(nameRef.current,    { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out', delay: 0.45 })
-      gsap.to(taglineRef.current, { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out', delay: 0.65 })
-      gsap.to(bioRef.current,     { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', delay: 0.80 })
+      gsap.to(eyebrowRef.current,    { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out', delay: 0.2 })
+      gsap.to(nameRef.current,       { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out', delay: 0.45 })
+      gsap.to(taglineRef.current,    { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out', delay: 0.65 })
+      gsap.to(bioRef.current,        { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', delay: 0.80 })
       gsap.to(scrollHintRef.current, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', delay: 1.0 })
     }, containerRef)
 
     return () => ctx.revert()
   }, [isLoaded])
 
+  // Fade out on scroll — GSAP animates the container directly
+  useEffect(() => {
+    if (!containerRef.current) return
+    if (activeSection === 0) {
+      gsap.to(containerRef.current, { opacity: 1, duration: 0.5, ease: 'power2.out' })
+    } else {
+      gsap.to(containerRef.current, { opacity: 0, duration: 0.4, ease: 'power2.in' })
+    }
+  }, [activeSection])
+
   return (
     <div
       ref={containerRef}
       className="fixed inset-0 z-20 flex flex-col items-center justify-center pointer-events-none"
-      style={{
-        opacity: activeSection === 0 ? 1 : 0,
-        transition: 'opacity 0.5s ease',
-      }}
     >
       <p
         ref={eyebrowRef}
