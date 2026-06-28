@@ -21,33 +21,28 @@ export default function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollY = window.scrollY
-      const h = window.innerHeight
-      const section = Math.floor(scrollY / h)
+      const section = Math.floor(window.scrollY / window.innerHeight)
       setActiveSection(Math.min(section, 3))
+      console.log('scroll Y:', window.scrollY, '| section:', section)
     }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [setActiveSection])
 
   return (
-    <div className="relative w-full">
+    <>
       {!isLoaded && <LoadingScreen />}
 
-      {/* Fixed 3D canvas — always behind everything */}
-      <div className="fixed inset-0 z-0">
+      {/* Fixed canvas — sits behind everything */}
+      <div style={{ position: 'fixed', inset: 0, zIndex: 0 }}>
         <SceneCanvas />
       </div>
 
-      {/* HTML UI overlays */}
+      {/* Fixed text overlay */}
       <HeroText />
 
-      <div className="scroll-container relative z-10">
-        <section className="h-screen" />
-        <section className="h-screen" />
-        <section className="h-screen" />
-        <section className="h-screen" />
-      </div>
-    </div>
+      {/* Scrollable spacer — this is what creates the scroll */}
+      <div style={{ height: '400vh', position: 'relative', zIndex: 1, pointerEvents: 'none' }} />
+    </>
   )
 }
