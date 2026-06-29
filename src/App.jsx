@@ -3,6 +3,7 @@ import { useSceneStore } from './store/useSceneStore'
 import SceneCanvas from './components/canvas/SceneCanvas'
 import LoadingScreen from './components/ui/LoadingScreen'
 import HeroText from './components/ui/HeroText'
+import AboutText from './components/ui/AboutText'
 import './index.css'
 
 export default function App() {
@@ -23,7 +24,6 @@ export default function App() {
     const handleScroll = () => {
       const section = Math.floor(window.scrollY / window.innerHeight)
       setActiveSection(Math.min(section, 3))
-      console.log('scroll Y:', window.scrollY, '| section:', section)
     }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
@@ -33,15 +33,13 @@ export default function App() {
     <>
       {!isLoaded && <LoadingScreen />}
 
-      {/* Fixed canvas — sits behind everything */}
       <div style={{ position: 'fixed', inset: 0, zIndex: 0 }}>
         <SceneCanvas />
       </div>
 
-      {/* Fixed text overlay */}
       <HeroText />
+      <AboutText />
 
-      {/* Scrollable spacer — this is what creates the scroll */}
       <div style={{ height: '400vh', position: 'relative', zIndex: 1, pointerEvents: 'none' }} />
     </>
   )
