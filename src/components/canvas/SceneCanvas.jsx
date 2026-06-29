@@ -6,6 +6,7 @@ import ParticleField from './ParticleField'
 import Lights from './Lights'
 import CameraRig from './CameraRig'
 import HeroScene from './HeroScene'
+import AboutScene from './AboutScene'
 
 export default function SceneCanvas() {
   const setLoaded = useSceneStore((s) => s.setLoaded)
@@ -36,6 +37,7 @@ export default function SceneCanvas() {
         <Lights />
         <ParticleField />
         <HeroScene />
+        <AboutScene />
       </Suspense>
     </Canvas>
   )
