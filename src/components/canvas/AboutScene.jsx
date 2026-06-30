@@ -132,6 +132,12 @@ export default function AboutScene() {
         </mesh>
       </Float>
 
+      {/* Day 8: subtle grid floor — gives the scene a sense of ground plane */}
+      <gridHelper
+        args={[20, 20, '#1a3a52', '#0d1825']}
+        position={[0, -5.2, 0]}
+      />
+
       <TorusKnotAccent />
       <FloatingAccent position={[2.8,  1.8,  0]}  color="#4FC3F7" speed={0.35} phase={0} />
       <FloatingAccent position={[-2.2, 2.2, -1]}  color="#B39DDB" speed={0.28} phase={1.2} />
