@@ -1,0 +1,486 @@
+From f33e0d0d7e3ba25c556f3041f003565f2e0e5d81 Mon Sep 17 00:00:00 2001
+From: Anisha <anisha18112006@gmail.com>
+Date: Tue, 30 Jun 2026 15:04:33 +0000
+Subject: [PATCH] Redesign theme: vibrant galaxy/nebula color palette across
+ particles, lights, hero, about
+
+---
+ src/components/canvas/AboutScene.jsx    | 22 +++++++-------
+ src/components/canvas/HeroScene.jsx     | 18 ++++++------
+ src/components/canvas/Lights.jsx        | 22 +++++++++++---
+ src/components/canvas/ParticleField.jsx | 39 ++++++++++++++++++++-----
+ src/components/canvas/SceneCanvas.jsx   |  4 +--
+ src/components/ui/AboutText.jsx         | 26 ++++++++---------
+ src/components/ui/HeroText.jsx          | 24 +++++++++++----
+ src/components/ui/LoadingScreen.jsx     | 20 +++++++++++--
+ src/index.css                           |  9 ++++--
+ tailwind.config.js                      |  8 +++--
+ 10 files changed, 131 insertions(+), 61 deletions(-)
+
+diff --git a/src/components/canvas/AboutScene.jsx b/src/components/canvas/AboutScene.jsx
+index b175071..7883ad0 100644
+--- a/src/components/canvas/AboutScene.jsx
++++ b/src/components/canvas/AboutScene.jsx
+@@ -15,7 +15,7 @@ function useSafeTexture(path) {
+     grad.addColorStop(1, '#0d0d1f')
+     ctx.fillStyle = grad
+     ctx.fillRect(0, 0, 600, 800)
+-    ctx.fillStyle = '#4FC3F7'
++    ctx.fillStyle = '#22D3EE'
+     ctx.font = 'bold 28px Inter, sans-serif'
+     ctx.textAlign = 'center'
+     ctx.fillText('Drop about.jpg here', 300, 380)
+@@ -68,8 +68,8 @@ function TorusKnotAccent() {
+     <mesh ref={ref} position={[-3.5, 0.5, -2]} scale={0.38}>
+       <torusKnotGeometry args={[1, 0.35, 100, 16]} />
+       <meshStandardMaterial
+-        color="#B39DDB"
+-        emissive="#7C3AED"
++        color="#F472B6"
++        emissive="#FBBF24"
+         emissiveIntensity={0.3}
+         metalness={0.7}
+         roughness={0.2}
+@@ -102,8 +102,8 @@ export default function AboutScene() {
+         <mesh position={[0, 0, -0.03]}>
+           <planeGeometry args={[3.22, 4.22]} />
+           <meshStandardMaterial
+-            color="#4FC3F7"
+-            emissive="#4FC3F7"
++            color="#22D3EE"
++            emissive="#22D3EE"
+             emissiveIntensity={0.15}
+             metalness={0.5}
+             roughness={0.5}
+@@ -134,17 +134,17 @@ export default function AboutScene() {
+ 
+       {/* Day 8: subtle grid floor — gives the scene a sense of ground plane */}
+       <gridHelper
+-        args={[20, 20, '#1a3a52', '#0d1825']}
++        args={[20, 20, '#3a1a52', '#1a0d33']}
+         position={[0, -5.2, 0]}
+       />
+ 
+       <TorusKnotAccent />
+-      <FloatingAccent position={[2.8,  1.8,  0]}  color="#4FC3F7" speed={0.35} phase={0} />
+-      <FloatingAccent position={[-2.2, 2.2, -1]}  color="#B39DDB" speed={0.28} phase={1.2} />
+-      <FloatingAccent position={[2.5, -2.0,  0.5]} color="#7C3AED" speed={0.42} phase={2.4} />
++      <FloatingAccent position={[2.8,  1.8,  0]}  color="#22D3EE" speed={0.35} phase={0} />
++      <FloatingAccent position={[-2.2, 2.2, -1]}  color="#F472B6" speed={0.28} phase={1.2} />
++      <FloatingAccent position={[2.5, -2.0,  0.5]} color="#FBBF24" speed={0.42} phase={2.4} />
+ 
+-      <pointLight position={[3, 3, 2]}   color="#4FC3F7" intensity={1.5} distance={12} />
+-      <pointLight position={[-4, -2, -3]} color="#7C3AED" intensity={1.2} distance={10} />
++      <pointLight position={[3, 3, 2]}   color="#22D3EE" intensity={1.5} distance={12} />
++      <pointLight position={[-4, -2, -3]} color="#FBBF24" intensity={1.2} distance={10} />
+     </group>
+   )
+ }
+\ No newline at end of file
+diff --git a/src/components/canvas/HeroScene.jsx b/src/components/canvas/HeroScene.jsx
+index a078918..04031bc 100644
+--- a/src/components/canvas/HeroScene.jsx
++++ b/src/components/canvas/HeroScene.jsx
+@@ -41,9 +41,9 @@ export default function HeroScene() {
+               metalness=0.8: very reflective, like polished metal
+               roughness=0.1: very smooth surface */}
+           <MeshDistortMaterial
+-            color="#4FC3F7"
+-            metalness={0.8}
+-            roughness={0.1}
++            color="#C084FC"
++            metalness={0.7}
++            roughness={0.15}
+             distort={0.4}
+             speed={2}
+             envMapIntensity={1}
+@@ -58,9 +58,9 @@ export default function HeroScene() {
+         <mesh rotation={[Math.PI / 2.5, 0, 0]}>
+           <torusGeometry args={[3.2, 0.04, 16, 100]} />
+           <meshStandardMaterial
+-            color="#4FC3F7"
+-            emissive="#4FC3F7"
+-            emissiveIntensity={0.5}
++            color="#F472B6"
++            emissive="#F472B6"
++            emissiveIntensity={0.6}
+             metalness={0.9}
+             roughness={0.1}
+           />
+@@ -70,9 +70,9 @@ export default function HeroScene() {
+         <mesh rotation={[Math.PI / 2.5, 0.3, 0]}>
+           <torusGeometry args={[3.8, 0.015, 16, 100]} />
+           <meshStandardMaterial
+-            color="#B39DDB"
+-            emissive="#B39DDB"
+-            emissiveIntensity={0.3}
++            color="#FBBF24"
++            emissive="#FBBF24"
++            emissiveIntensity={0.4}
+             metalness={0.9}
+             roughness={0.1}
+           />
+diff --git a/src/components/canvas/Lights.jsx b/src/components/canvas/Lights.jsx
+index ed7fbc6..1f2a42f 100644
+--- a/src/components/canvas/Lights.jsx
++++ b/src/components/canvas/Lights.jsx
+@@ -16,7 +16,7 @@ export default function Lights() {
+ 
+   return (
+     <>
+-      <ambientLight intensity={0.15} color="#1a1a2e" />
++      <ambientLight intensity={0.22} color="#2e1a4e" />
+       <directionalLight
+         position={[10, 10, 5]}
+         intensity={0.8}
+@@ -26,15 +26,29 @@ export default function Lights() {
+       <pointLight
+         ref={movingLightRef}
+         position={[0, 0, 5]}
+-        intensity={3}
+-        color="#4FC3F7"
++        intensity={3.5}
++        color="#22D3EE"
+         distance={30}
+         decay={2}
+       />
+       <pointLight
+         position={[-8, 4, -10]}
++        intensity={2.2}
++        color="#C084FC"
++        distance={40}
++        decay={2}
++      />
++      <pointLight
++        position={[8, -4, -25]}
+         intensity={2}
+-        color="#B39DDB"
++        color="#F472B6"
++        distance={45}
++        decay={2}
++      />
++      <pointLight
++        position={[-6, -6, -45]}
++        intensity={1.6}
++        color="#FBBF24"
+         distance={40}
+         decay={2}
+       />
+diff --git a/src/components/canvas/ParticleField.jsx b/src/components/canvas/ParticleField.jsx
+index f2a694d..451897e 100644
+--- a/src/components/canvas/ParticleField.jsx
++++ b/src/components/canvas/ParticleField.jsx
+@@ -3,21 +3,37 @@ import { useFrame } from '@react-three/fiber'
+ import { useSceneStore } from '../../store/useSceneStore'
+ import * as THREE from 'three'
+ 
++// Galaxy palette: cyan, violet, pink, gold, indigo — gives the
++// starfield a vibrant nebula feel instead of a flat single color
++const PALETTE = [
++  new THREE.Color('#22D3EE'),
++  new THREE.Color('#C084FC'),
++  new THREE.Color('#F472B6'),
++  new THREE.Color('#FBBF24'),
++  new THREE.Color('#818CF8'),
++]
++
+ export default function ParticleField() {
+   const pointsRef = useRef()
+   const mouse = useSceneStore((s) => s.mouse)
+ 
+-  const { positions, count } = useMemo(() => {
+-    const count = 2000
++  const { positions, colors, count } = useMemo(() => {
++    const count = 2400
+     const positions = new Float32Array(count * 3)
++    const colors = new Float32Array(count * 3)
+ 
+     for (let i = 0; i < count; i++) {
+-      positions[i * 3]     = (Math.random() - 0.5) * 200
++      positions[i * 3] = (Math.random() - 0.5) * 200
+       positions[i * 3 + 1] = (Math.random() - 0.5) * 200
+       positions[i * 3 + 2] = (Math.random() - 0.5) * 200
++
++      const c = PALETTE[Math.floor(Math.random() * PALETTE.length)]
++      colors[i * 3] = c.r
++      colors[i * 3 + 1] = c.g
++      colors[i * 3 + 2] = c.b
+     }
+ 
+-    return { positions, count }
++    return { positions, colors, count }
+   }, [])
+ 
+   useFrame((_, delta) => {
+@@ -34,14 +50,21 @@ export default function ParticleField() {
+           args={[positions, 3]}
+           count={count}
+         />
++        <bufferAttribute
++          attach="attributes-color"
++          args={[colors, 3]}
++          count={count}
++        />
+       </bufferGeometry>
+       <pointsMaterial
+-        color="#4FC3F7"
+-        size={0.08}
++        size={0.1}
++        vertexColors
+         sizeAttenuation={true}
+         transparent={true}
+-        opacity={0.8}
++        opacity={0.9}
++        blending={THREE.AdditiveBlending}
++        depthWrite={false}
+       />
+     </points>
+   )
+-}
+\ No newline at end of file
++}
+diff --git a/src/components/canvas/SceneCanvas.jsx b/src/components/canvas/SceneCanvas.jsx
+index 77d1b84..3871aa3 100644
+--- a/src/components/canvas/SceneCanvas.jsx
++++ b/src/components/canvas/SceneCanvas.jsx
+@@ -23,13 +23,13 @@ export default function SceneCanvas() {
+       shadows
+       gl={{
+         antialias: true,
+-        alpha: false,
++        alpha: true,
+         powerPreference: 'high-performance',
+       }}
+       camera={{ position: [0, 0, 8], fov: 60, near: 0.1, far: 200 }}
+       dpr={[1, 2]}
+       onCreated={handleCreated}
+-      style={{ background: '#050510' }}
++      style={{ background: 'transparent' }}
+     >
+       <AdaptiveDpr pixelated />
+       <Suspense fallback={null}>
+diff --git a/src/components/ui/AboutText.jsx b/src/components/ui/AboutText.jsx
+index 85565ac..4e63ae7 100644
+--- a/src/components/ui/AboutText.jsx
++++ b/src/components/ui/AboutText.jsx
+@@ -44,10 +44,10 @@ export default function AboutText() {
+         .about-card {
+           pointer-events: auto;
+           width: clamp(280px, 40vw, 420px);
+-          background: rgba(5, 5, 16, 0.72);
++          background: rgba(20, 10, 40, 0.65);
+           backdrop-filter: blur(18px);
+           -webkit-backdrop-filter: blur(18px);
+-          border: 1px solid rgba(79, 195, 247, 0.18);
++          border: 1px solid rgba(192, 132, 252, 0.28);
+           border-radius: 1.25rem;
+           padding: clamp(1.5rem, 3vw, 2.25rem);
+           opacity: 0;
+@@ -56,7 +56,7 @@ export default function AboutText() {
+           font-size: 0.7rem;
+           letter-spacing: 0.22em;
+           text-transform: uppercase;
+-          color: #4FC3F7;
++          color: #F472B6;
+           margin-bottom: 0.75rem;
+         }
+         .about-heading {
+@@ -69,31 +69,31 @@ export default function AboutText() {
+         .about-divider {
+           width: 2.5rem;
+           height: 2px;
+-          background: linear-gradient(90deg, #4FC3F7, transparent);
++          background: linear-gradient(90deg, #22D3EE, #F472B6, transparent);
+           margin-bottom: 1rem;
+         }
+         .about-bio {
+           font-size: 0.9rem;
+-          color: #9ca3af;
++          color: #d8c9f0;
+           font-weight: 300;
+           line-height: 1.7;
+           margin-bottom: 1rem;
+         }
+         .about-meta {
+           font-size: 0.78rem;
+-          color: #6b7280;
++          color: #b5a0d9;
+           margin-bottom: 1.5rem;
+           line-height: 1.6;
+         }
+         .about-meta span {
+-          color: #4FC3F7;
++          color: #FBBF24;
+           font-weight: 500;
+         }
+         .skills-label {
+           font-size: 0.68rem;
+           letter-spacing: 0.15em;
+           text-transform: uppercase;
+-          color: #4b5563;
++          color: #a78bfa;
+           margin-bottom: 0.6rem;
+         }
+         .skills-row {
+@@ -105,15 +105,15 @@ export default function AboutText() {
+           font-size: 0.72rem;
+           padding: 0.25rem 0.7rem;
+           border-radius: 999px;
+-          background: rgba(79, 195, 247, 0.08);
+-          border: 1px solid rgba(79, 195, 247, 0.25);
+-          color: #93c5fd;
++          background: rgba(192, 132, 252, 0.12);
++          border: 1px solid rgba(244, 114, 182, 0.35);
++          color: #f3e8ff;
+           font-weight: 500;
+           transition: background 0.2s, border-color 0.2s;
+         }
+         .skill-pill:hover {
+-          background: rgba(79, 195, 247, 0.18);
+-          border-color: rgba(79, 195, 247, 0.5);
++          background: rgba(192, 132, 252, 0.25);
++          border-color: rgba(244, 114, 182, 0.6);
+         }
+         @media (max-width: 767px) {
+           .about-overlay {
+diff --git a/src/components/ui/HeroText.jsx b/src/components/ui/HeroText.jsx
+index 15c2b35..d9a98d9 100644
+--- a/src/components/ui/HeroText.jsx
++++ b/src/components/ui/HeroText.jsx
+@@ -50,28 +50,40 @@ export default function HeroText() {
+       <div className={`hero-overlay ${activeSection !== 0 ? 'hidden' : ''}`}>
+         <p
+           ref={eyebrowRef}
+-          style={{ color: '#4FC3F7', letterSpacing: '0.25em', fontSize: '0.75rem', textTransform: 'uppercase', marginBottom: '1rem', opacity: 0 }}
++          style={{ color: '#F472B6', letterSpacing: '0.25em', fontSize: '0.75rem', textTransform: 'uppercase', marginBottom: '1rem', opacity: 0 }}
+         >
+           Welcome to my universe
+         </p>
+ 
+         <h1
+           ref={nameRef}
+-          style={{ fontSize: 'clamp(3rem, 10vw, 6rem)', fontWeight: 700, color: 'white', textAlign: 'center', lineHeight: 1, marginBottom: '1rem', opacity: 0 }}
++          style={{
++            fontSize: 'clamp(3rem, 10vw, 6rem)',
++            fontWeight: 700,
++            textAlign: 'center',
++            lineHeight: 1,
++            marginBottom: '1rem',
++            opacity: 0,
++            background: 'linear-gradient(90deg, #22D3EE, #C084FC 50%, #F472B6)',
++            WebkitBackgroundClip: 'text',
++            WebkitTextFillColor: 'transparent',
++            backgroundClip: 'text',
++            filter: 'drop-shadow(0 0 30px rgba(192, 132, 252, 0.35))',
++          }}
+         >
+           Anisha
+         </h1>
+ 
+         <p
+           ref={taglineRef}
+-          style={{ fontSize: 'clamp(1rem, 2.5vw, 1.25rem)', color: '#9ca3af', fontWeight: 300, textAlign: 'center', marginBottom: '0.75rem', opacity: 0 }}
++          style={{ fontSize: 'clamp(1rem, 2.5vw, 1.25rem)', color: '#e9d5ff', fontWeight: 300, textAlign: 'center', marginBottom: '0.75rem', opacity: 0 }}
+         >
+           AI/ML &amp; Full Stack Developer
+         </p>
+ 
+         <p
+           ref={bioRef}
+-          style={{ fontSize: '0.875rem', color: '#6b7280', textAlign: 'center', letterSpacing: '0.05em', opacity: 0 }}
++          style={{ fontSize: '0.875rem', color: '#a78bfa', textAlign: 'center', letterSpacing: '0.05em', opacity: 0 }}
+         >
+           B.Tech CSE (AIML) · CVRGU · Building things that think
+         </p>
+@@ -80,8 +92,8 @@ export default function HeroText() {
+           ref={scrollHintRef}
+           style={{ position: 'absolute', bottom: '2.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem', opacity: 0 }}
+         >
+-          <span style={{ fontSize: '0.7rem', color: '#6b7280', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Scroll to explore</span>
+-          <span style={{ color: '#4FC3F7', fontSize: '1.2rem', animation: 'bounce 1.8s ease-in-out infinite' }}>↓</span>
++          <span style={{ fontSize: '0.7rem', color: '#a78bfa', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Scroll to explore</span>
++          <span style={{ color: '#FBBF24', fontSize: '1.2rem', animation: 'bounce 1.8s ease-in-out infinite' }}>↓</span>
+         </div>
+       </div>
+     </>
+diff --git a/src/components/ui/LoadingScreen.jsx b/src/components/ui/LoadingScreen.jsx
+index bed004c..1910814 100644
+--- a/src/components/ui/LoadingScreen.jsx
++++ b/src/components/ui/LoadingScreen.jsx
+@@ -15,10 +15,24 @@ export default function LoadingScreen() {
+ 
+   return (
+     <div
+-      className={`fixed inset-0 z-50 bg-[#050510] flex flex-col items-center justify-center transition-opacity duration-700 ${isLoaded ? 'opacity-0' : 'opacity-100'}`}
++      className={`fixed inset-0 z-50 flex flex-col items-center justify-center transition-opacity duration-700 ${isLoaded ? 'opacity-0' : 'opacity-100'}`}
++      style={{
++        background:
++          'radial-gradient(ellipse 80% 80% at 50% 50%, #2a1454 0%, #0b0620 60%, #060313 100%)',
++      }}
+     >
+-      <div className="w-16 h-16 border-2 border-neon-blue border-t-transparent rounded-full animate-spin mb-6" />
+-      <p className="text-neon-blue text-sm tracking-widest uppercase">Initializing Space</p>
++      <div
++        className="w-16 h-16 rounded-full animate-spin mb-6"
++        style={{
++          border: '2px solid transparent',
++          borderTopColor: '#F472B6',
++          borderRightColor: '#22D3EE',
++          borderBottomColor: '#FBBF24',
++        }}
++      />
++      <p className="text-sm tracking-widest uppercase" style={{ color: '#e9d5ff' }}>
++        Initializing Galaxy
++      </p>
+     </div>
+   )
+ }
+\ No newline at end of file
+diff --git a/src/index.css b/src/index.css
+index a54ada7..b4a0e9d 100644
+--- a/src/index.css
++++ b/src/index.css
+@@ -7,14 +7,19 @@
+ 
+ html {
+   overflow-y: scroll;
+-  background: #050510;
++  background: #0b0620;
+ }
+ 
+ body {
+   width: 100%;
+-  background: #050510;
+   color: #e2e8f0;
+   overflow-x: hidden;
++  background:
++    radial-gradient(ellipse 80% 60% at 15% 10%, rgba(192, 132, 252, 0.22), transparent 60%),
++    radial-gradient(ellipse 70% 50% at 85% 20%, rgba(244, 114, 182, 0.16), transparent 60%),
++    radial-gradient(ellipse 60% 60% at 50% 80%, rgba(34, 211, 238, 0.14), transparent 65%),
++    radial-gradient(ellipse 90% 90% at 50% 50%, #1a1040 0%, #0b0620 55%, #060313 100%);
++  background-attachment: fixed;
+ }
+ 
+ #root {
+diff --git a/tailwind.config.js b/tailwind.config.js
+index 3632b7e..cad9726 100644
+--- a/tailwind.config.js
++++ b/tailwind.config.js
+@@ -7,9 +7,11 @@ export default {
+   theme: {
+     extend: {
+       colors: {
+-        'neon-blue': '#4FC3F7',
+-        'neon-purple': '#B39DDB',
+-        'deep-space': '#050510',
++        'neon-blue': '#22D3EE',
++        'neon-purple': '#C084FC',
++        'neon-pink': '#F472B6',
++        'neon-gold': '#FBBF24',
++        'deep-space': '#0B0620',
+       },
+       fontFamily: {
+         sans: ['Inter', 'system-ui', 'sans-serif'],
+-- 
+2.43.0
+

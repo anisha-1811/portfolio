@@ -15,7 +15,7 @@ function useSafeTexture(path) {
     grad.addColorStop(1, '#0d0d1f')
     ctx.fillStyle = grad
     ctx.fillRect(0, 0, 600, 800)
-    ctx.fillStyle = '#4FC3F7'
+    ctx.fillStyle = '#22D3EE'
     ctx.font = 'bold 28px Inter, sans-serif'
     ctx.textAlign = 'center'
     ctx.fillText('Drop about.jpg here', 300, 380)
@@ -68,8 +68,8 @@ function TorusKnotAccent() {
     <mesh ref={ref} position={[-3.5, 0.5, -2]} scale={0.38}>
       <torusKnotGeometry args={[1, 0.35, 100, 16]} />
       <meshStandardMaterial
-        color="#B39DDB"
-        emissive="#7C3AED"
+        color="#F472B6"
+        emissive="#FBBF24"
         emissiveIntensity={0.3}
         metalness={0.7}
         roughness={0.2}
@@ -102,8 +102,8 @@ export default function AboutScene() {
         <mesh position={[0, 0, -0.03]}>
           <planeGeometry args={[3.22, 4.22]} />
           <meshStandardMaterial
-            color="#4FC3F7"
-            emissive="#4FC3F7"
+            color="#22D3EE"
+            emissive="#22D3EE"
             emissiveIntensity={0.15}
             metalness={0.5}
             roughness={0.5}
@@ -134,17 +134,17 @@ export default function AboutScene() {
 
       {/* Day 8: subtle grid floor — gives the scene a sense of ground plane */}
       <gridHelper
-        args={[20, 20, '#1a3a52', '#0d1825']}
+        args={[20, 20, '#3a1a52', '#1a0d33']}
         position={[0, -5.2, 0]}
       />
 
       <TorusKnotAccent />
-      <FloatingAccent position={[2.8,  1.8,  0]}  color="#4FC3F7" speed={0.35} phase={0} />
-      <FloatingAccent position={[-2.2, 2.2, -1]}  color="#B39DDB" speed={0.28} phase={1.2} />
-      <FloatingAccent position={[2.5, -2.0,  0.5]} color="#7C3AED" speed={0.42} phase={2.4} />
+      <FloatingAccent position={[2.8,  1.8,  0]}  color="#22D3EE" speed={0.35} phase={0} />
+      <FloatingAccent position={[-2.2, 2.2, -1]}  color="#F472B6" speed={0.28} phase={1.2} />
+      <FloatingAccent position={[2.5, -2.0,  0.5]} color="#FBBF24" speed={0.42} phase={2.4} />
 
-      <pointLight position={[3, 3, 2]}   color="#4FC3F7" intensity={1.5} distance={12} />
-      <pointLight position={[-4, -2, -3]} color="#7C3AED" intensity={1.2} distance={10} />
+      <pointLight position={[3, 3, 2]}   color="#22D3EE" intensity={1.5} distance={12} />
+      <pointLight position={[-4, -2, -3]} color="#FBBF24" intensity={1.2} distance={10} />
     </group>
   )
 }

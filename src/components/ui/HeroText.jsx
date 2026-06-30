@@ -50,28 +50,40 @@ export default function HeroText() {
       <div className={`hero-overlay ${activeSection !== 0 ? 'hidden' : ''}`}>
         <p
           ref={eyebrowRef}
-          style={{ color: '#4FC3F7', letterSpacing: '0.25em', fontSize: '0.75rem', textTransform: 'uppercase', marginBottom: '1rem', opacity: 0 }}
+          style={{ color: '#F472B6', letterSpacing: '0.25em', fontSize: '0.75rem', textTransform: 'uppercase', marginBottom: '1rem', opacity: 0 }}
         >
           Welcome to my universe
         </p>
 
         <h1
           ref={nameRef}
-          style={{ fontSize: 'clamp(3rem, 10vw, 6rem)', fontWeight: 700, color: 'white', textAlign: 'center', lineHeight: 1, marginBottom: '1rem', opacity: 0 }}
+          style={{
+            fontSize: 'clamp(3rem, 10vw, 6rem)',
+            fontWeight: 700,
+            textAlign: 'center',
+            lineHeight: 1,
+            marginBottom: '1rem',
+            opacity: 0,
+            background: 'linear-gradient(90deg, #22D3EE, #C084FC 50%, #F472B6)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            filter: 'drop-shadow(0 0 30px rgba(192, 132, 252, 0.35))',
+          }}
         >
           Anisha
         </h1>
 
         <p
           ref={taglineRef}
-          style={{ fontSize: 'clamp(1rem, 2.5vw, 1.25rem)', color: '#9ca3af', fontWeight: 300, textAlign: 'center', marginBottom: '0.75rem', opacity: 0 }}
+          style={{ fontSize: 'clamp(1rem, 2.5vw, 1.25rem)', color: '#e9d5ff', fontWeight: 300, textAlign: 'center', marginBottom: '0.75rem', opacity: 0 }}
         >
           AI/ML &amp; Full Stack Developer
         </p>
 
         <p
           ref={bioRef}
-          style={{ fontSize: '0.875rem', color: '#6b7280', textAlign: 'center', letterSpacing: '0.05em', opacity: 0 }}
+          style={{ fontSize: '0.875rem', color: '#a78bfa', textAlign: 'center', letterSpacing: '0.05em', opacity: 0 }}
         >
           B.Tech CSE (AIML) · CVRGU · Building things that think
         </p>
@@ -80,8 +92,8 @@ export default function HeroText() {
           ref={scrollHintRef}
           style={{ position: 'absolute', bottom: '2.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem', opacity: 0 }}
         >
-          <span style={{ fontSize: '0.7rem', color: '#6b7280', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Scroll to explore</span>
-          <span style={{ color: '#4FC3F7', fontSize: '1.2rem', animation: 'bounce 1.8s ease-in-out infinite' }}>↓</span>
+          <span style={{ fontSize: '0.7rem', color: '#a78bfa', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Scroll to explore</span>
+          <span style={{ color: '#FBBF24', fontSize: '1.2rem', animation: 'bounce 1.8s ease-in-out infinite' }}>↓</span>
         </div>
       </div>
     </>

@@ -44,10 +44,10 @@ export default function AboutText() {
         .about-card {
           pointer-events: auto;
           width: clamp(280px, 40vw, 420px);
-          background: rgba(5, 5, 16, 0.72);
+          background: rgba(20, 10, 40, 0.65);
           backdrop-filter: blur(18px);
           -webkit-backdrop-filter: blur(18px);
-          border: 1px solid rgba(79, 195, 247, 0.18);
+          border: 1px solid rgba(192, 132, 252, 0.28);
           border-radius: 1.25rem;
           padding: clamp(1.5rem, 3vw, 2.25rem);
           opacity: 0;
@@ -56,7 +56,7 @@ export default function AboutText() {
           font-size: 0.7rem;
           letter-spacing: 0.22em;
           text-transform: uppercase;
-          color: #4FC3F7;
+          color: #F472B6;
           margin-bottom: 0.75rem;
         }
         .about-heading {
@@ -69,31 +69,31 @@ export default function AboutText() {
         .about-divider {
           width: 2.5rem;
           height: 2px;
-          background: linear-gradient(90deg, #4FC3F7, transparent);
+          background: linear-gradient(90deg, #22D3EE, #F472B6, transparent);
           margin-bottom: 1rem;
         }
         .about-bio {
           font-size: 0.9rem;
-          color: #9ca3af;
+          color: #d8c9f0;
           font-weight: 300;
           line-height: 1.7;
           margin-bottom: 1rem;
         }
         .about-meta {
           font-size: 0.78rem;
-          color: #6b7280;
+          color: #b5a0d9;
           margin-bottom: 1.5rem;
           line-height: 1.6;
         }
         .about-meta span {
-          color: #4FC3F7;
+          color: #FBBF24;
           font-weight: 500;
         }
         .skills-label {
           font-size: 0.68rem;
           letter-spacing: 0.15em;
           text-transform: uppercase;
-          color: #4b5563;
+          color: #a78bfa;
           margin-bottom: 0.6rem;
         }
         .skills-row {
@@ -105,15 +105,15 @@ export default function AboutText() {
           font-size: 0.72rem;
           padding: 0.25rem 0.7rem;
           border-radius: 999px;
-          background: rgba(79, 195, 247, 0.08);
-          border: 1px solid rgba(79, 195, 247, 0.25);
-          color: #93c5fd;
+          background: rgba(192, 132, 252, 0.12);
+          border: 1px solid rgba(244, 114, 182, 0.35);
+          color: #f3e8ff;
           font-weight: 500;
           transition: background 0.2s, border-color 0.2s;
         }
         .skill-pill:hover {
-          background: rgba(79, 195, 247, 0.18);
-          border-color: rgba(79, 195, 247, 0.5);
+          background: rgba(192, 132, 252, 0.25);
+          border-color: rgba(244, 114, 182, 0.6);
         }
         @media (max-width: 767px) {
           .about-overlay {

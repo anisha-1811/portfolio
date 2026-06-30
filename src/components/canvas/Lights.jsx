@@ -16,7 +16,7 @@ export default function Lights() {
 
   return (
     <>
-      <ambientLight intensity={0.15} color="#1a1a2e" />
+      <ambientLight intensity={0.22} color="#2e1a4e" />
       <directionalLight
         position={[10, 10, 5]}
         intensity={0.8}
@@ -26,15 +26,29 @@ export default function Lights() {
       <pointLight
         ref={movingLightRef}
         position={[0, 0, 5]}
-        intensity={3}
-        color="#4FC3F7"
+        intensity={3.5}
+        color="#22D3EE"
         distance={30}
         decay={2}
       />
       <pointLight
         position={[-8, 4, -10]}
+        intensity={2.2}
+        color="#C084FC"
+        distance={40}
+        decay={2}
+      />
+      <pointLight
+        position={[8, -4, -25]}
         intensity={2}
-        color="#B39DDB"
+        color="#F472B6"
+        distance={45}
+        decay={2}
+      />
+      <pointLight
+        position={[-6, -6, -45]}
+        intensity={1.6}
+        color="#FBBF24"
         distance={40}
         decay={2}
       />

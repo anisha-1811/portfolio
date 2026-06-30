@@ -23,13 +23,13 @@ export default function SceneCanvas() {
       shadows
       gl={{
         antialias: true,
-        alpha: false,
+        alpha: true,
         powerPreference: 'high-performance',
       }}
       camera={{ position: [0, 0, 8], fov: 60, near: 0.1, far: 200 }}
       dpr={[1, 2]}
       onCreated={handleCreated}
-      style={{ background: '#050510' }}
+      style={{ background: 'transparent' }}
     >
       <AdaptiveDpr pixelated />
       <Suspense fallback={null}>

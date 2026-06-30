@@ -41,9 +41,9 @@ export default function HeroScene() {
               metalness=0.8: very reflective, like polished metal
               roughness=0.1: very smooth surface */}
           <MeshDistortMaterial
-            color="#4FC3F7"
-            metalness={0.8}
-            roughness={0.1}
+            color="#C084FC"
+            metalness={0.7}
+            roughness={0.15}
             distort={0.4}
             speed={2}
             envMapIntensity={1}
@@ -58,9 +58,9 @@ export default function HeroScene() {
         <mesh rotation={[Math.PI / 2.5, 0, 0]}>
           <torusGeometry args={[3.2, 0.04, 16, 100]} />
           <meshStandardMaterial
-            color="#4FC3F7"
-            emissive="#4FC3F7"
-            emissiveIntensity={0.5}
+            color="#F472B6"
+            emissive="#F472B6"
+            emissiveIntensity={0.6}
             metalness={0.9}
             roughness={0.1}
           />
@@ -70,9 +70,9 @@ export default function HeroScene() {
         <mesh rotation={[Math.PI / 2.5, 0.3, 0]}>
           <torusGeometry args={[3.8, 0.015, 16, 100]} />
           <meshStandardMaterial
-            color="#B39DDB"
-            emissive="#B39DDB"
-            emissiveIntensity={0.3}
+            color="#FBBF24"
+            emissive="#FBBF24"
+            emissiveIntensity={0.4}
             metalness={0.9}
             roughness={0.1}
           />

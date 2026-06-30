@@ -15,10 +15,24 @@ export default function LoadingScreen() {
 
   return (
     <div
-      className={`fixed inset-0 z-50 bg-[#050510] flex flex-col items-center justify-center transition-opacity duration-700 ${isLoaded ? 'opacity-0' : 'opacity-100'}`}
+      className={`fixed inset-0 z-50 flex flex-col items-center justify-center transition-opacity duration-700 ${isLoaded ? 'opacity-0' : 'opacity-100'}`}
+      style={{
+        background:
+          'radial-gradient(ellipse 80% 80% at 50% 50%, #2a1454 0%, #0b0620 60%, #060313 100%)',
+      }}
     >
-      <div className="w-16 h-16 border-2 border-neon-blue border-t-transparent rounded-full animate-spin mb-6" />
-      <p className="text-neon-blue text-sm tracking-widest uppercase">Initializing Space</p>
+      <div
+        className="w-16 h-16 rounded-full animate-spin mb-6"
+        style={{
+          border: '2px solid transparent',
+          borderTopColor: '#F472B6',
+          borderRightColor: '#22D3EE',
+          borderBottomColor: '#FBBF24',
+        }}
+      />
+      <p className="text-sm tracking-widest uppercase" style={{ color: '#e9d5ff' }}>
+        Initializing Galaxy
+      </p>
     </div>
   )
 }
